@@ -53,8 +53,7 @@ if [ $is_running -eq 0 ]; then
 
     trace "... backing up files"
 
-    duplicity \
-        ${FULL} ${SOURCE} ${DEST} >> ${DAILYLOGFILE} 2>&1
+    duplicity ${FULL} ${SOURCE} ${DEST} >> ${DAILYLOGFILE} 2>&1
 
     trace "Backup for game servers complete"
     trace "------------------------------------"
@@ -70,8 +69,4 @@ if [ $is_running -eq 0 ]; then
 
     # Append the daily log file to the main log file
     cat "$DAILYLOGFILE" >> $LOGFILE
-
-    # Reset the ENV variables. Don't need them sitting around
-    unset AWS_ACCESS_KEY_ID
-    unset AWS_SECRET_ACCESS_KEY
 fi
